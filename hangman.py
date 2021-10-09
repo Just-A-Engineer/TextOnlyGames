@@ -6,7 +6,7 @@ lives = None
 game_won = False
 
 print("WELCOME TO HANGMAN!!!")
-print("You have five lives!")
+print("You have three lives!")
 print("Choose wisely!")
 
 play = input("would you like to play? (y/n) ")
@@ -22,22 +22,21 @@ def play_game(lives):
     
     while game_won == False:
         guess = input("what is your guess? ")
-        
         if guess in mys_letters:
             print(f"Good job! {guess} is in the word!")
             guess_letters.append(guess)
             print(guess_letters)
         elif guess == mys_word:
-            print(f"YOU WON! Congratulations!!! {mys_word} is the correct word!")
+            print("YOU WON! congratulations!!!")
             game_won = True
         else:
             print(f"{guess} is not in the word! You lose a life.")
             lives -= 1
-            
+        
         if lives == 0:
             print("Game Over! You Lose!!")
             break
-        
+
 if play == "y":
     play_game(5)
 else:
@@ -45,7 +44,9 @@ else:
     
 play_again = input("Would you like to play again? (y/n) ")
 
-if play_again == "y":
+while play_again != "n":
     play_game(5)
-else:
-    print("Thanks for playing!")
+    play_again = input("Would you like to play again? (y/n)")
+    if play_again == "n":
+        print("Thanks for playing!")
+        break
